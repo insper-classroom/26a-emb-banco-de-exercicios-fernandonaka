@@ -135,17 +135,13 @@ int main() {
         }
         if (flag_timer_verde){
             flag_timer_verde = 0;
-            if (!alarm_ativado_verde) {
-                led_state_verde = !led_state_verde;
-                gpio_put(LED_VERDE, led_state_verde);
-            }
+            led_state_verde = !led_state_verde;
+            gpio_put(LED_VERDE, led_state_verde);
         }
         if (flag_timer_amarelo){
             flag_timer_amarelo = 0;
-            if (!alarm_ativado_amarelo) {
-                led_state_amarelo = !led_state_amarelo;
-                gpio_put(LED_AMARELO, led_state_amarelo);
-            }
+            led_state_amarelo = !led_state_amarelo;
+            gpio_put(LED_AMARELO, led_state_amarelo);
         }
 
 
