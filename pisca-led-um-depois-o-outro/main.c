@@ -6,7 +6,7 @@
 
 
 // lembrar da relação: T = 1/f
-// ex: f = 5hz ---> T = 1/5 = 0,2 ---> toggle de 100ms (metade) // ou nao?
+// ex: f = 5hz ---> T = 1/5 = 0,2 ---> 200s no timer repetitivo
 
 const int BTN_AZUL = 19;
 const int BTN_AMARELO = 26;
@@ -102,7 +102,7 @@ int main() {
 
     while (true) {
         if (flag_fall_azul){
-            if (!alarm_ativado_azul && !alarm_ativado_amarelo){
+            if (!alarm_ativado_azul){
                 alarm_ativado_azul = true;
                 botao_amarelo = true;
                 alarm_azul = add_alarm_in_ms(2000,alarm_callback_azul,NULL,false);
@@ -111,7 +111,7 @@ int main() {
             flag_fall_azul = 0;
         }
         if (flag_fall_amarelo){
-            if (!alarm_ativado_amarelo && !alarm_ativado_azul){
+            if (!alarm_ativado_amarelo){
                 alarm_ativado_amarelo = true;
                 botao_azul = true;
                 alarm_amarelo = add_alarm_in_ms(1000,alarm_callback_amarelo,NULL,false);
