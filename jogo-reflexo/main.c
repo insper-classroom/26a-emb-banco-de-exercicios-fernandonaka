@@ -59,7 +59,7 @@ int main() {
     bool inicio = false;
     int pnts = 0;
     int rodada = 0;
-    int ordem[10] = {1,0,2,1,0,1,2,1,0,1};
+    const int ordem[10] = {1,0,2,1,0,1,2,1,0,1};
 
 
     while (true) {
