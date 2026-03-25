@@ -68,7 +68,7 @@ int main() {
   int led_state_verde = 0;
   int led_state_azul = 0;
 
-  bool amarelo = false;
+  bool amarelo = false; // oi
   bool azul = false;
  
   while (true) {
