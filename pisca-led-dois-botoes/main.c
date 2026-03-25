@@ -52,30 +52,38 @@ bool timer_callback_amarelo(repeating_timer_t *rt){
 
 int64_t alarm_callback_verde(alarm_id_t id, void *user_data) {
     alarm_ativado_verde = true;
+    flag_timer_verde = 0;
     gpio_put(LED_VERDE, 0);
     led_state_verde = 0;
     cancel_repeating_timer(&timer_led_verde);
     if (!alarm_ativado_amarelo){
         alarm_ativado_amarelo = true;
+        flag_timer_amarelo = 0;
         gpio_put(LED_AMARELO, 0);
         led_state_amarelo = 0;
         cancel_repeating_timer(&timer_led_amarelo);
         cancel_alarm(alarm_amarelo);
+        alarm_amarelo = 0;
     }
+    alarm_verde = 0;
     return 0; 
 }
 int64_t alarm_callback_amarelo(alarm_id_t id, void *user_data) {
     alarm_ativado_amarelo = true;
+    flag_timer_amarelo = 0;
     gpio_put(LED_AMARELO, 0);
     led_state_amarelo = 0;
     cancel_repeating_timer(&timer_led_amarelo);
     if (!alarm_ativado_verde){
         alarm_ativado_verde = true;
+        flag_timer_verde = 0;
         gpio_put(LED_VERDE, 0);
         led_state_verde = 0;
         cancel_repeating_timer(&timer_led_verde);
         cancel_alarm(alarm_verde);
+        alarm_verde = 0;
     }
+    alarm_amarelo = 0;
     return 0; 
 }
 
