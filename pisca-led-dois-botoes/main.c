@@ -5,11 +5,11 @@
 #include "hardware/timer.h"
 #include "pico/stdlib.h"
 
-const int BTN_VERDE = 28;
-const int BTN_AMARELO = 26;
+const int BTN_VERDE = 13; // 28;
+const int BTN_AMARELO = 15; // 26;
 
-const int LED_VERDE = 5;
-const int LED_AMARELO = 9;
+const int LED_VERDE = 18; // 5;
+const int LED_AMARELO = 16; // 9;
 
 volatile int flag_fall_verde = 0;
 volatile int flag_fall_amarelo = 0;
