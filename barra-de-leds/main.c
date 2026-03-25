@@ -14,7 +14,7 @@ const int LED_PIN_5 = 6;
 
 
 volatile int flag_btn = 0;
-volatile int sw_mode = 0;
+volatile int sw_mode = 1;
 
 
 void bar_init(){
@@ -111,10 +111,14 @@ int main() {
     while (true) {
         if (flag_btn){
             if (sw_mode == 0){
-                cont += 1;
+                if (cont < 5) {
+                    cont += 1;
+                }
                 bar_display(cont);
             } else {
-                cont -= 1;
+                if (cont > 0) {
+                    cont -= 1;
+                }
                 bar_display(cont);
             }
             flag_btn = 0;
