@@ -60,6 +60,7 @@ int64_t alarm_callback_azul(alarm_id_t id, void *user_data) {
     cancel_repeating_timer(&timer_led_azul);
     gpio_put(LED_AZUL, 0);
     if (botao_amarelo){
+        alarm_ativado_amarelo = true;
         add_repeating_timer_ms(100,timer_callback_amarelo, NULL, &timer_led_amarelo);
         alarm_amarelo = add_alarm_in_ms(1000,alarm_callback_amarelo,NULL,false);
         botao_amarelo = false;
@@ -72,6 +73,7 @@ int64_t alarm_callback_amarelo(alarm_id_t id, void *user_data) {
     cancel_repeating_timer(&timer_led_amarelo);
     gpio_put(LED_AMARELO, 0);
     if (botao_azul){
+        alarm_ativado_azul = true;
         add_repeating_timer_ms(250,timer_callback_azul, NULL, &timer_led_azul);
         alarm_azul = add_alarm_in_ms(2000,alarm_callback_azul,NULL,false);
         botao_azul = false;
@@ -100,7 +102,7 @@ int main() {
 
     while (true) {
         if (flag_fall_azul){
-            if (!alarm_ativado_azul){
+            if (!alarm_ativado_azul && !alarm_ativado_amarelo){
                 alarm_ativado_azul = true;
                 botao_amarelo = true;
                 alarm_azul = add_alarm_in_ms(2000,alarm_callback_azul,NULL,false);
@@ -109,7 +111,7 @@ int main() {
             flag_fall_azul = 0;
         }
         if (flag_fall_amarelo){
-            if (!alarm_ativado_amarelo){
+            if (!alarm_ativado_amarelo && !alarm_ativado_azul){
                 alarm_ativado_amarelo = true;
                 botao_azul = true;
                 alarm_amarelo = add_alarm_in_ms(1000,alarm_callback_amarelo,NULL,false);
