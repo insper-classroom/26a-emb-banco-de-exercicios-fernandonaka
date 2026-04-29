@@ -102,8 +102,6 @@ int main() {
     gpio_set_irq_enabled_with_callback(BTN_AZUL, GPIO_IRQ_EDGE_FALL, true, &btn_callback);
     gpio_set_irq_enabled(BTN_AMARELO, GPIO_IRQ_EDGE_FALL, true);
 
-    int led_state_azul = 0;
-    int led_state_amarelo = 0; 
 
     while (true) {
         if (flag_fall_azul){
