@@ -25,6 +25,10 @@ volatile alarm_id_t alarm_amarelo = 0;
 volatile bool alarm_ativado_verde = false;
 volatile bool alarm_ativado_amarelo = false;
 
+
+volatile int led_state_verde = 0;
+volatile int led_state_amarelo = 0;
+
 bool timer_callback_verde(repeating_timer_t *rt){
     flag_timer_verde = 1;
     return true;
@@ -37,12 +41,14 @@ bool timer_callback_amarelo(repeating_timer_t *rt){
 int64_t alarm_callback_verde(alarm_id_t id, void *user_data) {
     alarm_ativado_verde = false;
     cancel_repeating_timer(&timer_led_verde);
-    gpio_put(LED_VERDE, 0);
+    led_state_verde = 0;
+    gpio_put(LED_VERDE, led_state_verde);
 
     if (alarm_ativado_amarelo){
         alarm_ativado_amarelo = false;
         cancel_repeating_timer(&timer_led_amarelo);
-        gpio_put(LED_AMARELO, 0);
+        led_state_amarelo = 0;
+        gpio_put(LED_AMARELO, led_state_amarelo);
     }
     return 0; 
 }
@@ -50,12 +56,14 @@ int64_t alarm_callback_verde(alarm_id_t id, void *user_data) {
 int64_t alarm_callback_amarelo(alarm_id_t id, void *user_data) {
     alarm_ativado_amarelo = false;
     cancel_repeating_timer(&timer_led_amarelo);
-    gpio_put(LED_AMARELO, 0);
+    led_state_amarelo = 0;
+    gpio_put(LED_AMARELO, led_state_amarelo);
 
     if (alarm_ativado_verde){
         alarm_ativado_verde = false;
         cancel_repeating_timer(&timer_led_verde);
-        gpio_put(LED_VERDE, 0);
+        led_state_verde = 0;
+        gpio_put(LED_VERDE, led_state_verde);
     }
     return 0; 
 }
