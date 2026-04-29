@@ -101,6 +101,8 @@ int main() {
         if (flag_fall_verde){
             if (!alarm_ativado_verde){
                 alarm_ativado_verde = true;
+                led_state_verde = 1;
+                gpio_put(LED_VERDE, led_state_verde);
                 alarm_verde = add_alarm_in_ms(1000,alarm_callback_verde,NULL,false);
                 add_repeating_timer_ms(200,timer_callback_verde, NULL, &timer_led_verde);
             }
@@ -109,6 +111,8 @@ int main() {
         if (flag_fall_amarelo){
             if (!alarm_ativado_amarelo){
                 alarm_ativado_amarelo = true;
+                led_state_amarelo= 1;
+                gpio_put(LED_AMARELO, led_state_amarelo);
                 alarm_amarelo = add_alarm_in_ms(2000,alarm_callback_amarelo,NULL,false);
                 add_repeating_timer_ms(500,timer_callback_amarelo, NULL, &timer_led_amarelo);
             }
