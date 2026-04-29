@@ -20,8 +20,8 @@ volatile int flag_timer_azul = 0;
 volatile alarm_id_t alarm = 0;
 volatile bool alarm_ativado = false;
 
-volatile int led_state_amarelo = 0;
-volatile int led_state_azul = 0;
+// volatile int led_state_amarelo = 0;
+// volatile int led_state_azul = 0;
 
 bool timer_callback_amarelo(repeating_timer_t *rt){
     flag_timer_amarelo = 1;
