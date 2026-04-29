@@ -130,5 +130,6 @@ int main() {
             gpio_put(LED_AMARELO, led_state_amarelo);
         }
     }
+    return 0;
 }
 
