@@ -39,7 +39,7 @@ void btn_callback(uint gpio, uint32_t events) {
         }
     }
 }
-
+ // teste 
 int main() {
   stdio_init_all();
 
